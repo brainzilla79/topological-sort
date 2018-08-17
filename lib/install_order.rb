@@ -7,23 +7,8 @@
 
 # Import any files you need to
 
-require_relative 'graph'
-require_relative 'topological_sort'
-require 'byebug'
 
 
 def install_order(arr)
-  vertex_hash = {}
-  independant = []
-  arr.each do |tuple|
-    to_vertex = vertex_hash[tuple[0]] || Vertex.new(tuple[0])
-    from_vertex = vertex_hash[tuple[1]] || Vertex.new(tuple[1])
-    edge = Edge.new(from_vertex, to_vertex)
-    vertex_hash[tuple[0]] = to_vertex
-    vertex_hash[tuple[1]] = from_vertex
-  end 
-  sorted_vertices = topological_sort(vertex_hash.values).map { |vertex| vertex.value }
-  max = sorted_vertices.max
-  [*1..max].each { |value| independant << value unless vertex_hash[value] }
-  independant + sorted_vertices
-end 
+
+end
